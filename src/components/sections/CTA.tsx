@@ -8,7 +8,7 @@ export function CTA() {
   const c = t.cta
 
   return (
-    <section className="pb-20 sm:pb-28">
+    <section className="pb-14 sm:pb-24">
       <div className="container-x">
         <Reveal>
           <div className="relative overflow-hidden rounded-[2rem] bg-[linear-gradient(120deg,#ff6b00,#ff8a33_55%,#e85a00)] px-6 py-12 text-center text-white shadow-[0_40px_80px_-30px_rgb(255_107_0/0.6)] sm:px-12 sm:py-16">

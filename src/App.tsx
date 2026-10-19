@@ -15,10 +15,10 @@ export default function App() {
       <main>
         <Hero />
         <RoadStrip />
-        <Mission />
+        <Pricing />
         <WhyUs />
         <HowItWorks />
-        <Pricing />
+        <Mission />
         <Materials />
         <Reviews />
         <Branches />

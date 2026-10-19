@@ -8,7 +8,7 @@ export function HowItWorks() {
   const h = t.how
 
   return (
-    <section id={SECTION_IDS.how} className="scroll-mt-24 py-20 sm:py-28">
+    <section id={SECTION_IDS.how} className="scroll-mt-24 bg-surface py-14 sm:py-24">
       <div className="container-x grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <SectionTitle eyebrow={h.eyebrow} title={h.titleStart} accent={h.titleAccent} text={<RichText text={h.text} />} />

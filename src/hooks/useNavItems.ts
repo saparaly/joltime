@@ -2,11 +2,11 @@ import { useMemo } from 'react'
 import { SECTION_IDS } from '../config/site'
 import { useLocale } from '../i18n/useLocale'
 
-const NAV_ORDER = ['about', 'how', 'pricing', 'materials', 'reviews', 'branches'] as const
+const NAV_ORDER = ['pricing', 'how', 'about', 'materials', 'reviews', 'branches'] as const
 type NavKey = (typeof NAV_ORDER)[number]
 
 /** В шапке — только ключевые пункты, в подвале — все. */
-const HEADER_KEYS: readonly NavKey[] = ['how', 'pricing', 'materials', 'reviews', 'branches']
+const HEADER_KEYS: readonly NavKey[] = ['pricing', 'how', 'materials', 'reviews', 'branches']
 
 export function useNavItems(scope: 'header' | 'footer' = 'footer') {
   const { t } = useLocale()

@@ -49,7 +49,7 @@ vercel.json               — то же для Vercel
 | Жирное выделение в тексте | обернуть `**двойными звёздочками**` прямо в строке словаря |
 | Телефон, Instagram, домен, ссылки и рейтинг 2GIS | `src/config/site.ts` (`GIS_URL`, `GIS_RATING` — обновлять вручную) |
 | Адрес филиала | тексты — в словарях (`branches.items`), координаты — `BRANCH_GEO` в `config/site.ts` |
-| Тарифы и пакеты | `pricing.groups` в словарях: `courses` (обучение), `driving` (вождение), `retake` (пересдача). Цена — поле `price`, приписка «/ урок» — `priceNote` |
+| Тарифы и пакеты | `pricing.groups` в словарях: `courses` (обучение), `driving` (вождение), `retake` (пересдача). Цена — поле `price`, приписка «/ урок» — `priceNote`. Показываются как прайс-лист: строка = пакет, подробности раскрываются по тапу |
 | Спецпредложения | `pricing.offers.items`: `group` + `index` указывают, к какому пакету прыгать |
 | Отзывы | `src/config/reviews.ts`; скриншот (`image`) в `public/reviews/` необязателен — без него карточка ведёт на 2GIS |
 | Цвета темы | `src/index.css`, блоки `:root` и `:root[data-theme="dark"]` |
@@ -90,7 +90,6 @@ vercel.json               — то же для Vercel
 | Параллакс пятен фона в hero (только десктоп) | `HeroBackground` в `components/sections/Hero.tsx` |
 | Машинка на дороге в hero | `RoadCar` в `components/sections/Hero.tsx` |
 | Подсветка карточек за курсором («фонарик») | утилита `spotlight` в `src/index.css` + хук `hooks/useSpotlight.ts` (WhyUs, тарифы, спецпредложения) |
-| Бегущая светящаяся рамка у популярного тарифа | утилита `border-glow` + `@property --border-angle` в `src/index.css` |
 | Блик на оранжевых кнопках | утилита `btn-shine` в `src/index.css` |
 | Подъём карточек отзывов при наведении | `components/sections/Reviews.tsx` |
 | Линия между шагами обучения | `components/sections/HowItWorks.tsx` |

@@ -24,7 +24,7 @@ export function Reviews() {
   const closeLightbox = useCallback(() => setOpened(null), [])
 
   return (
-    <section id={SECTION_IDS.reviews} className="scroll-mt-24 py-20 sm:py-28">
+    <section id={SECTION_IDS.reviews} className="scroll-mt-24 py-14 sm:py-24">
       <div className="container-x flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <SectionTitle eyebrow={r.eyebrow} title={r.titleStart} accent={r.titleAccent} text={r.text} />
         <Reveal delay={0.1} className="hidden shrink-0 gap-2 sm:flex">

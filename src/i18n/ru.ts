@@ -302,7 +302,7 @@ export const ru = {
       retake: 'Автодром, работа над ошибками',
     },
     included: 'Что входит',
-    more: 'Ещё {n}',
+    details: 'Подробнее',
     less: 'Свернуть',
     choose: 'Выбрать пакет',
     popular: 'Популярный',

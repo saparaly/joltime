@@ -8,7 +8,7 @@ export function Mission() {
   const m = t.mission
 
   return (
-    <section id={SECTION_IDS.about} className="scroll-mt-24 py-20 sm:py-28">
+    <section id={SECTION_IDS.about} className="scroll-mt-24 py-14 sm:py-24">
       <div className="container-x grid gap-10 lg:grid-cols-2 lg:gap-16">
         <SectionTitle eyebrow={m.eyebrow} title={m.titleStart} accent={m.titleAccent} />
         <Reveal delay={0.1} className="space-y-5 text-base leading-relaxed text-ink-soft sm:text-lg">

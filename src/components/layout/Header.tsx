@@ -21,7 +21,7 @@ export function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled || open ? 'bg-paper/95 shadow-[0_1px_0_0_var(--line)] lg:bg-paper/85 lg:backdrop-blur-md' : 'bg-transparent'
+        scrolled || open ? 'bg-paper shadow-[0_1px_0_0_var(--line)] lg:bg-paper/85 lg:backdrop-blur-md' : 'bg-transparent'
       }`}
     >
       <div className="container-x flex h-16 items-center justify-between gap-4 sm:h-20 lg:gap-6">

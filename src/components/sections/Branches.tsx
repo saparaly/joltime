@@ -17,7 +17,7 @@ export function Branches() {
   const geo = BRANCH_GEO[active.id]
 
   return (
-    <section id={SECTION_IDS.branches} className="scroll-mt-24 bg-surface py-20 sm:py-28">
+    <section id={SECTION_IDS.branches} className="scroll-mt-24 bg-surface py-14 sm:py-24">
       <div className="container-x">
         <SectionTitle eyebrow={b.eyebrow} title={b.titleStart} accent={b.titleAccent} text={b.text} />
 

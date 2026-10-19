@@ -283,7 +283,7 @@ export const kk: Dictionary = {
       retake: 'Автодром, қателермен жұмыс',
     },
     included: 'Пакетке кіреді',
-    more: 'Тағы {n}',
+    details: 'Толығырақ',
     less: 'Жасыру',
     choose: 'Пакетті таңдау',
     popular: 'Танымал',

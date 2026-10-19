@@ -12,7 +12,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section id={SECTION_IDS.faq} className="scroll-mt-24 py-20 sm:py-28">
+    <section id={SECTION_IDS.faq} className="scroll-mt-24 py-14 sm:py-24">
       <div className="container-x grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <SectionTitle eyebrow={f.eyebrow} title={f.titleStart} accent={f.titleAccent} text={f.text} />
 
