@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Выставляем тему до первой отрисовки, чтобы не было вспышки белого
+      (function () {
+        try {
+          var s = localStorage.getItem('joltime-theme');
+          var t = s === 'dark' || s === 'light' ? s : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.dataset.theme = t;
+        } catch (e) { document.documentElement.dataset.theme = 'light'; }
+      })();
+    </script>
+
+    <title>JOLTIME — автошкола в Астане. Права с первого раза</title>
+    <meta name="description" content="Автошкола JOLTIME в Астане: обучение с нуля до результата, бесплатное пробное занятие, гибкий график, рейтинг 5,0 на 2GIS. Запишитесь в WhatsApp." />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#fffaf5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)" />
+
+    <link rel="canonical" href="https://joltime.kz/" />
+    <link rel="alternate" hreflang="ru" href="https://joltime.kz/" />
+    <link rel="alternate" hreflang="kk" href="https://joltime.kz/kk/" />
+    <link rel="alternate" hreflang="x-default" href="https://joltime.kz/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="JOLTIME" />
+    <meta property="og:title" content="JOLTIME — автошкола в Астане" />
+    <meta property="og:description" content="Хочешь получить права с первого раза? Обучение с нуля до результата. Бесплатное пробное занятие." />
+    <meta property="og:url" content="https://joltime.kz/" />
+    <meta property="og:locale" content="ru_KZ" />
+    <meta property="og:locale:alternate" content="kk_KZ" />
+    <meta property="og:image" content="https://joltime.kz/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Montserrat и Onest проверены на полную поддержку казахского алфавита (Ә Ғ Қ Ң Ө Ұ Ү Һ І) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

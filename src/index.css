@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+/* Тёмная тема включается атрибутом <html data-theme="dark"> */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ── Токены темы ───────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+  --paper: #fffaf5;      /* фон страницы */
+  --surface: #ffffff;    /* карточки, хедер */
+  --ink: #0f1626;        /* основной текст */
+  --ink-soft: #4b5567;   /* вторичный текст */
+  --line: #efe4d8;       /* бордеры */
+  --brand-50: #fff6ee;
+  --brand-100: #ffe8d2;
+  --brand-200: #ffcfa3;
+  --night: #0f1626;      /* всегда тёмные блоки (онлайн-материалы) */
+  --night-2: #1b2540;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0b1020;
+  --surface: #141b2d;
+  --ink: #f3f5f9;
+  --ink-soft: #a7b0c2;
+  --line: #273145;
+  --brand-50: #1d1710;
+  --brand-100: #2c1f12;
+  --brand-200: #6b3d14;
+  --night: #070b16;
+  --night-2: #131b30;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-night: var(--night);
+  --color-night-2: var(--night-2);
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+}
+
+@theme {
+  --font-sans: "Onest", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", "Onest", ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-300: #ffae69;
+  --color-brand-400: #ff8a33;
+  --color-brand-500: #ff6b00;
+  --color-brand-600: #e85a00;
+  --color-brand-700: #bf4600;
+
+  --shadow-soft: 0 10px 30px -12px rgb(255 107 0 / 0.25);
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 12px 32px -16px rgb(0 0 0 / 0.18);
+
+  --animate-road-dash: road-dash 0.45s linear infinite;
+  --animate-gradient: gradient-shift 8s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.2s ease-out infinite;
+  --animate-shine: shine 4.5s ease-in-out infinite;
+  --animate-logo-dash: logo-dash 0.5s linear infinite;
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  @keyframes road-dash {
+    to { background-position-x: -72px; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translate(-50%, -50%) rotate(-2deg); }
+    50% { transform: translate(-50%, calc(-50% - 14px)) rotate(1deg); }
+  }
+  @keyframes shine {
+    0%, 70% { transform: translateX(-130%) skewX(-18deg); }
+    100% { transform: translateX(230%) skewX(-18deg); }
+  }
+  @keyframes logo-dash {
+    to { stroke-dashoffset: -10; }
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
+}
+
+html { scroll-behavior: smooth; }
+body {
+  @apply bg-paper text-ink font-sans antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+::selection { background: #ffcfa3; color: #0f1626; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ── Утилиты ───────────────────────────────────────────────── */
+@utility container-x {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+@utility text-balance { text-wrap: balance; }
+
+/* Горизонтальная карусель: отступ совпадает с контейнером max-w-6xl */
+@utility track-pad {
+  --track-pad: 1rem;
+  padding-inline: var(--track-pad);
+  scroll-padding-inline: var(--track-pad);
+  @media (min-width: 40rem) { --track-pad: 1.5rem; }
+  @media (min-width: 64rem) { --track-pad: max(2rem, calc((100vw - 72rem) / 2 + 2rem)); }
+}
+
+/* Мягкий блик, пробегающий по оранжевым кнопкам раз в несколько секунд */
+@utility btn-shine {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 45%;
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.35), transparent);
+    animation: var(--animate-shine);
+    pointer-events: none;
+  }
+}
+
+/* «Фонарик» под курсором — см. hooks/useSpotlight.ts */
+@utility spotlight {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(280px circle at var(--sx, 50%) var(--sy, 50%), rgb(255 107 0 / 0.14), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  &:hover::before { opacity: 1; }
+}
+
+/* Вращающаяся светящаяся рамка (популярный тариф) */
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes border-spin {
+  to { --border-angle: 360deg; }
+}
+@utility border-glow {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: calc(1.5rem + 2px);
+    padding: 2px;
+    background: conic-gradient(from var(--border-angle), #ff6b00, #ffcfa3, #ff6b00 40%, #ffe8d2 60%, #ff6b00);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: border-spin 5s linear infinite;
+    pointer-events: none;
+  }
+}
