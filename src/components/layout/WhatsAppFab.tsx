@@ -19,7 +19,7 @@ export function WhatsAppFab() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 80, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed inset-x-3 bottom-3 z-40 flex gap-2 rounded-2xl bg-surface/90 p-2 shadow-[0_-4px_30px_-10px_rgb(0_0_0/0.3)] ring-1 ring-line backdrop-blur-md lg:hidden"
+            className="fixed inset-x-3 bottom-3 z-40 flex gap-2 rounded-2xl bg-surface p-2 shadow-[0_-4px_30px_-10px_rgb(0_0_0/0.3)] ring-1 ring-line lg:hidden"
             style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))' }}
           >
             <a href={href} target="_blank" rel="noopener noreferrer" className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-brand-500 px-4 py-3 text-sm font-bold text-white">

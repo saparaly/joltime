@@ -34,7 +34,7 @@ export function Materials() {
                 className={`relative flex h-full flex-col rounded-3xl p-6 ring-1 transition-transform duration-300 hover:-translate-y-1 sm:p-7 ${
                   item.featured
                     ? 'bg-brand-500 text-white shadow-[0_30px_60px_-25px_rgb(255_107_0/0.7)] ring-brand-400'
-                    : 'bg-white/[0.06] ring-white/10 backdrop-blur'
+                    : 'bg-white/[0.06] ring-white/10'
                 }`}
               >
                 {item.featured && (

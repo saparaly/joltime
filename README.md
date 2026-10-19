@@ -86,13 +86,12 @@ vercel.json               — то же для Vercel
 | Заголовки секций по словам | `components/ui/SectionTitle.tsx` |
 | «Маркер» под жирными словами | `components/ui/RichText.tsx` (`highlight`) |
 | **Интерактивная дорога** (фишка сайта): машинка едет сама, ускоряется при скролле, с мышью — «би-бип» + рывок по клику, «газ» при зажатии, езда за курсором; на тач-устройствах дорога только декоративная (едет и ускоряется от скролла) | `components/sections/RoadStrip.tsx` — всё в одном `requestAnimationFrame` через motion values, без ререндеров. Тексты знаков — `marquee` в словарях, подсказки — `road` |
-| 3D-наклон карточки в hero за курсором | `components/ui/TiltCard.tsx` (только мышь/десктоп) |
-| Параллакс пятен фона в hero | `HeroBackground` в `components/sections/Hero.tsx` |
+| 3D-наклон карточки в hero за курсором | `components/ui/TiltCard.tsx` (только мышь/десктоп, см. `hooks/useHasMouse.ts`) |
+| Параллакс пятен фона в hero (только десктоп) | `HeroBackground` в `components/sections/Hero.tsx` |
 | Машинка на дороге в hero | `RoadCar` в `components/sections/Hero.tsx` |
 | Подсветка карточек за курсором («фонарик») | утилита `spotlight` в `src/index.css` + хук `hooks/useSpotlight.ts` (WhyUs, тарифы, спецпредложения) |
 | Бегущая светящаяся рамка у популярного тарифа | утилита `border-glow` + `@property --border-angle` в `src/index.css` |
 | Блик на оранжевых кнопках | утилита `btn-shine` в `src/index.css` |
-| Переливающийся градиент и разметка в финальном CTA | `components/sections/CTA.tsx` + keyframes `gradient-shift`, `road-dash` |
 | Подъём карточек отзывов при наведении | `components/sections/Reviews.tsx` |
 | Линия между шагами обучения | `components/sections/HowItWorks.tsx` |
 

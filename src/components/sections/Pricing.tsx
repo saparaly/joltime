@@ -137,7 +137,7 @@ function PackageCard({ pkg, dict, highlighted }: { pkg: Package; dict: PricingDi
       } ${highlighted ? 'ring-2 ring-brand-500 shadow-[0_0_0_6px_rgb(255_107_0/0.15)]' : ''}`}
     >
       {pkg.featured && (
-        <span className="absolute -top-3 left-6 rounded-full bg-brand-500 px-3 py-1 text-[11px] font-black uppercase tracking-wider text-white">
+        <span className="absolute -top-3 left-6 z-10 rounded-full bg-brand-500 px-3 py-1 text-[11px] font-black uppercase tracking-wider text-white">
           {dict.popular}
         </span>
       )}

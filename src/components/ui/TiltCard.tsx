@@ -1,11 +1,12 @@
-import { useCallback, useState, type MouseEvent, type ReactNode } from 'react'
+import { useCallback, type MouseEvent, type ReactNode } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
+import { useHasMouse } from '../../hooks/useHasMouse'
 
 const MAX_TILT = 9
 
 /** 3D-наклон за курсором с бликом. Включается только там, где есть мышь. */
 export function TiltCard({ children, className = '' }: { children: ReactNode; className?: string }) {
-  const [enabled] = useState(() => window.matchMedia('(hover: hover) and (pointer: fine)').matches)
+  const enabled = useHasMouse()
 
   const px = useMotionValue(0.5)
   const py = useMotionValue(0.5)

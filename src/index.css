@@ -57,20 +57,11 @@
   --shadow-soft: 0 10px 30px -12px rgb(255 107 0 / 0.25);
   --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 12px 32px -16px rgb(0 0 0 / 0.18);
 
-  --animate-road-dash: road-dash 0.45s linear infinite;
-  --animate-gradient: gradient-shift 8s ease-in-out infinite;
   --animate-float: float 7s ease-in-out infinite;
   --animate-pulse-ring: pulse-ring 2.2s ease-out infinite;
   --animate-shine: shine 4.5s ease-in-out infinite;
   --animate-logo-dash: logo-dash 0.5s linear infinite;
 
-  @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-  @keyframes road-dash {
-    to { background-position-x: -72px; }
-  }
   @keyframes float {
     0%, 100% { transform: translate(-50%, -50%) rotate(-2deg); }
     50% { transform: translate(-50%, calc(-50% - 14px)) rotate(1deg); }
@@ -170,5 +161,7 @@ body {
     mask-composite: exclude;
     animation: border-spin 5s linear infinite;
     pointer-events: none;
+    /* На тач-устройствах рамка статичная: анимация градиента перерисовывается каждый кадр */
+    @media (hover: none) { animation: none; }
   }
 }

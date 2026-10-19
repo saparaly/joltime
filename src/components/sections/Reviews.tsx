@@ -100,7 +100,7 @@ function ReviewCard({ review, onOpen }: { review: Review; onOpen: () => void }) 
             className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
           />
           <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#0f1626]/70 via-transparent to-transparent" />
-          <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold text-ink shadow-card transition group-hover:bg-brand-500 group-hover:text-white">
+          <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold text-[#0f1626] shadow-card transition group-hover:bg-brand-500 group-hover:text-white">
             <Maximize2 className="h-3.5 w-3.5" aria-hidden="true" /> {r.openScreenshot}
           </span>
         </button>

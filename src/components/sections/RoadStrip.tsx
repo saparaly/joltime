@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from 'react'
-import { AnimatePresence, motion, useAnimationFrame, useMotionValue, useReducedMotion, useScroll, useSpring, useVelocity } from 'motion/react'
+import { AnimatePresence, motion, useAnimationFrame, useInView, useMotionValue, useReducedMotion, useScroll, useSpring, useVelocity } from 'motion/react'
 import { MousePointerClick } from 'lucide-react'
 import { useLocale } from '../../i18n/useLocale'
+import { useHasMouse } from '../../hooks/useHasMouse'
 
 const BASE_SPEED = 110 // px/с при спокойной езде
 const GAS_BOOST = 2.4 // во сколько раз быстрее при зажатой дороге
@@ -18,8 +19,10 @@ const DASH_PERIOD = 72 // длина штриха + пробела размет�
 export function RoadStrip() {
   const { t } = useLocale()
   const reduced = useReducedMotion()
-  const [hasMouse] = useState(() => window.matchMedia('(hover: hover) and (pointer: fine)').matches)
+  const hasMouse = useHasMouse()
   const stripRef = useRef<HTMLDivElement>(null)
+  // Пока дорога не на экране, кадры не считаем — экономим батарею и не мешаем скроллу
+  const inView = useInView(stripRef, { margin: '120px' })
   const signsRef = useRef<HTMLDivElement>(null)
 
   const signsX = useMotionValue(0)
@@ -40,7 +43,7 @@ export function RoadStrip() {
   const scrollVelocity = useVelocity(scrollY)
 
   useAnimationFrame((now, delta) => {
-    if (reduced) return
+    if (reduced || !inView) return
     const dt = Math.min(delta, 50) / 1000
     const scrollBoost = Math.min(Math.abs(scrollVelocity.get()) / 1200, 2.5)
     const boosting = gas.current || now < boostUntil.current
@@ -133,9 +136,10 @@ export function RoadStrip() {
 
           {/* Полотно */}
           <div className="absolute inset-x-0 bottom-0 h-14 border-t-[3px] border-white/60 bg-[#232c42]">
+            {/* Разметка двигается через transform (а не background-position) — без перерисовки на каждом кадре */}
             <motion.div
-              style={{ backgroundPositionX: dashX }}
-              className="absolute inset-x-0 top-1/2 h-1 -translate-y-1/2 bg-[repeating-linear-gradient(90deg,#ffb067_0_36px,transparent_36px_72px)] opacity-90"
+              style={{ x: dashX }}
+              className="absolute -left-[72px] right-0 top-1/2 h-1 -translate-y-1/2 bg-[repeating-linear-gradient(90deg,#ffb067_0_36px,transparent_36px_72px)] opacity-90 will-change-transform"
             />
           </div>
 
@@ -148,7 +152,7 @@ export function RoadStrip() {
                   animate={{ opacity: 1, y: -6, scale: 1 }}
                   exit={{ opacity: 0, y: -16 }}
                   transition={{ duration: 0.25 }}
-                  className="font-display absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white px-3 py-1 text-xs font-extrabold text-ink shadow-card"
+                  className="font-display absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white px-3 py-1 text-xs font-extrabold text-[#0f1626] shadow-card"
                 >
                   {t.road.honk}
                 </motion.span>

@@ -3,6 +3,7 @@ import { ArrowDown, BadgeCheck, Star } from 'lucide-react'
 import { Button, WhatsAppButton, InstagramIcon, RichText, TiltCard } from '../ui'
 import { EASE_OUT } from '../../lib/motion'
 import { useLocale } from '../../i18n/useLocale'
+import { useHasMouse } from '../../hooks/useHasMouse'
 import { format } from '../../i18n'
 import { GIS_RATING, GIS_REVIEWS_URL, INSTAGRAM_HANDLE, INSTAGRAM_URL, SECTION_IDS } from '../../config/site'
 
@@ -92,14 +93,16 @@ export function Hero() {
 }
 
 function HeroBackground() {
-  // Лёгкий параллакс: пятна фона уезжают медленнее контента
+  // Лёгкий параллакс: пятна фона уезжают медленнее контента. Только на десктопе —
+  // на телефоне движение размытых слоёв заметно нагружает GPU при скролле.
+  const parallax = useHasMouse()
   const { scrollY } = useScroll()
   const y1 = useTransform(scrollY, [0, 800], [0, 160])
   const y2 = useTransform(scrollY, [0, 800], [0, -90])
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-      <motion.div style={{ y: y1 }} className="absolute -top-32 right-[-10%] h-[28rem] w-[28rem] rounded-full bg-brand-200/60 blur-3xl sm:h-[36rem] sm:w-[36rem]" />
-      <motion.div style={{ y: y2 }} className="absolute left-[-15%] top-1/3 h-72 w-72 rounded-full bg-brand-100 blur-3xl" />
+      <motion.div style={parallax ? { y: y1 } : undefined} className="absolute -top-32 right-[-10%] h-[28rem] w-[28rem] rounded-full bg-brand-200/60 blur-3xl sm:h-[36rem] sm:w-[36rem]" />
+      <motion.div style={parallax ? { y: y2 } : undefined} className="absolute left-[-15%] top-1/3 h-72 w-72 rounded-full bg-brand-100 blur-3xl" />
       <div
         className="absolute inset-0 opacity-[0.35]"
         style={{
