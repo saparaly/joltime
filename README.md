@@ -80,7 +80,7 @@ vercel.json               — то же для Vercel
 
 | Эффект | Где |
 |---|---|
-| Логотип: дорога «рисуется» при загрузке, при наведении значок наклоняется и разметка бежит | `components/ui/Logo.tsx` + keyframes `logo-dash` |
+| Логотип: буква J «рисуется» при загрузке, при наведении значок наклоняется, по нему пробегает блик, J подпрыгивает | `components/ui/Logo.tsx` (та же J, что в `public/favicon.svg`) |
 | Полоска прогресса чтения сверху | `components/layout/ScrollProgress.tsx` |
 | Появление блоков при скролле | `components/ui/Reveal.tsx` |
 | Заголовки секций по словам | `components/ui/SectionTitle.tsx` |

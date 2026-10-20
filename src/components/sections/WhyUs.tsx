@@ -1,10 +1,10 @@
-import { CalendarClock, GraduationCap, HeartHandshake, MapPinned, MonitorSmartphone, Target, Wallet, type LucideIcon } from 'lucide-react'
+import { CalendarClock, GraduationCap, HeartHandshake, MonitorSmartphone, Target, Wallet, type LucideIcon } from 'lucide-react'
 import { Reveal, SectionTitle } from '../ui'
 import { useLocale } from '../../i18n/useLocale'
 import { SECTION_IDS } from '../../config/site'
 import { useSpotlight } from '../../hooks/useSpotlight'
 
-const ICONS: Record<string, LucideIcon> = { Target, CalendarClock, HeartHandshake, MapPinned, Wallet, MonitorSmartphone, GraduationCap }
+const ICONS: Record<string, LucideIcon> = { Target, CalendarClock, HeartHandshake, Wallet, MonitorSmartphone, GraduationCap }
 
 export function WhyUs() {
   const { t } = useLocale()
@@ -17,11 +17,11 @@ export function WhyUs() {
       <div className="container-x">
         <SectionTitle eyebrow={w.eyebrow} title={w.titleStart} accent={w.titleAccent} text={w.text} align="center" />
 
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-14 sm:gap-4 lg:grid-cols-4 lg:gap-5">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-14 sm:gap-4 lg:grid-cols-3 lg:gap-6">
           {w.items.map((item, i) => {
             const Icon = ICONS[item.icon] ?? Target
             return (
-              <Reveal key={item.title} delay={(i % 4) * 0.08}>
+              <Reveal key={item.title} delay={(i % 3) * 0.08}>
                 <article onMouseMove={spotlight} className="spotlight group relative h-full rounded-2xl bg-surface p-4 ring-1 ring-line transition-all duration-300 hover:-translate-y-1 hover:shadow-card hover:ring-brand-200 sm:rounded-3xl sm:p-7">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500 sm:h-12 sm:w-12 sm:rounded-2xl text-white shadow-soft transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105">
                     <Icon className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
