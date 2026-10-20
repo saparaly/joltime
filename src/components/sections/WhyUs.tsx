@@ -1,10 +1,10 @@
-import { Baby, CalendarClock, GraduationCap, HeartHandshake, MapPinned, MonitorSmartphone, Target, Wallet, type LucideIcon } from 'lucide-react'
+import { CalendarClock, GraduationCap, HeartHandshake, MapPinned, MonitorSmartphone, Target, Wallet, type LucideIcon } from 'lucide-react'
 import { Reveal, SectionTitle } from '../ui'
 import { useLocale } from '../../i18n/useLocale'
 import { SECTION_IDS } from '../../config/site'
 import { useSpotlight } from '../../hooks/useSpotlight'
 
-const ICONS: Record<string, LucideIcon> = { Target, CalendarClock, HeartHandshake, MapPinned, Wallet, MonitorSmartphone, Baby, GraduationCap }
+const ICONS: Record<string, LucideIcon> = { Target, CalendarClock, HeartHandshake, MapPinned, Wallet, MonitorSmartphone, GraduationCap }
 
 export function WhyUs() {
   const { t } = useLocale()
