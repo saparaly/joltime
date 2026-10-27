@@ -2,7 +2,7 @@ import { MessageCircle, Phone } from 'lucide-react'
 import { Logo, InstagramIcon, GisBadge } from '../ui'
 import { useNavItems } from '../../hooks/useNavItems'
 import { useLocale } from '../../i18n/useLocale'
-import { GIS_URL, INSTAGRAM_HANDLE, INSTAGRAM_URL, PHONE_DISPLAY, PHONE_TEL, waLink } from '../../config/site'
+import { GIS_URL, INSTAGRAM_HANDLE, INSTAGRAM_URL, PHONES, PHONE_TEL, waLink } from '../../config/site'
 
 const CURRENT_YEAR = new Date().getFullYear()
 const ICON_LINK_CLASS = 'rounded-full bg-paper p-2.5 ring-1 ring-line transition hover:ring-brand-300'
@@ -49,10 +49,12 @@ export function Footer() {
         <address className="not-italic">
           <p className="text-xs font-bold uppercase tracking-wider text-ink-soft">{t.footer.contacts}</p>
           <ul className="mt-4 space-y-3 text-sm">
-            <li>
-              <a href={PHONE_TEL} className="font-bold hover:text-brand-600">{PHONE_DISPLAY}</a>
-              <span className="block text-ink-soft">{t.footer.phoneSub}</span>
-            </li>
+            {PHONES.map((p, i) => (
+              <li key={p.raw}>
+                <a href={p.tel} className="font-bold hover:text-brand-600">{p.display}</a>
+                <span className="block text-ink-soft">{i === 0 ? t.footer.phoneSub : t.footer.phoneSub2}</span>
+              </li>
+            ))}
             <li>
               <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="font-bold hover:text-brand-600">
                 {INSTAGRAM_HANDLE}

@@ -1,7 +1,7 @@
 import { Phone } from 'lucide-react'
 import { Reveal, WhatsAppButton } from '../ui'
 import { useLocale } from '../../i18n/useLocale'
-import { PHONE_DISPLAY, PHONE_TEL } from '../../config/site'
+import { PHONES } from '../../config/site'
 
 export function CTA() {
   const { t } = useLocale()
@@ -25,12 +25,15 @@ export function CTA() {
             <p className="relative mx-auto mt-4 max-w-xl text-base text-white/85 sm:text-lg">{c.text}</p>
             <div className="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <WhatsAppButton label={t.common.signUpWa} variant="dark" className="!bg-[#0f1626] !text-white" />
-              <a
-                href={PHONE_TEL}
-                className="inline-flex items-center gap-2 rounded-full bg-white/15 px-6 py-3.5 text-sm font-bold ring-1 ring-white/30 transition hover:bg-white/25 sm:text-base"
-              >
-                <Phone className="h-5 w-5" aria-hidden="true" /> {PHONE_DISPLAY}
-              </a>
+              {PHONES.map((p) => (
+                <a
+                  key={p.raw}
+                  href={p.tel}
+                  className="inline-flex items-center gap-2 rounded-full bg-white/15 px-6 py-3.5 text-sm font-bold ring-1 ring-white/30 transition hover:bg-white/25 sm:text-base"
+                >
+                  <Phone className="h-5 w-5" aria-hidden="true" /> {p.display}
+                </a>
+              ))}
             </div>
           </div>
         </Reveal>

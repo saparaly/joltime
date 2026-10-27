@@ -7,7 +7,7 @@ import { useLockBodyScroll } from '../../hooks/useLockBodyScroll'
 import { useCloseOnDesktop } from '../../hooks/useCloseOnDesktop'
 import { useNavItems } from '../../hooks/useNavItems'
 import { useLocale } from '../../i18n/useLocale'
-import { PHONE_DISPLAY, PHONE_TEL } from '../../config/site'
+import { PHONES } from '../../config/site'
 
 export function Header() {
   const [open, setOpen] = useState(false)
@@ -84,9 +84,11 @@ export function Header() {
             <div className="mt-6 flex flex-col gap-3 px-2">
               <LangSwitch className="self-start" />
               <WhatsAppButton label={t.common.signUpWa} />
-              <Button href={PHONE_TEL} variant="ghost">
-                <Phone className="h-5 w-5" aria-hidden="true" /> {PHONE_DISPLAY}
-              </Button>
+              {PHONES.map((p) => (
+                <Button key={p.raw} href={p.tel} variant="ghost">
+                  <Phone className="h-5 w-5" aria-hidden="true" /> {p.display}
+                </Button>
+              ))}
             </div>
           </motion.div>
         )}

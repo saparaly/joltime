@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { LOCALES, pathForLocale, type Locale } from '../i18n'
 import { useLocale } from '../i18n/useLocale'
-import { BRANCH_GEO, GIS_RATING, GIS_URL, INSTAGRAM_URL, PHONE_RAW, SITE_NAME, SITE_URL } from '../config/site'
+import { BRANCH_GEO, GIS_RATING, GIS_URL, INSTAGRAM_URL, PHONES, SITE_NAME, SITE_URL } from '../config/site'
 
 function setMeta(selector: string, attr: 'content' | 'href', value: string) {
   const el = document.head.querySelector<HTMLElement>(selector)
@@ -40,7 +40,7 @@ export function useSeo() {
       name: SITE_NAME,
       description: t.meta.description,
       url,
-      telephone: `+${PHONE_RAW}`,
+      telephone: PHONES.map((p) => `+${p.raw}`),
       sameAs: [INSTAGRAM_URL, GIS_URL],
       aggregateRating: { '@type': 'AggregateRating', ratingValue: GIS_RATING.value, bestRating: 5, ratingCount: GIS_RATING.count },
       areaServed: { '@type': 'City', name: 'Астана' },

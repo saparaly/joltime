@@ -7,9 +7,15 @@
 export const SITE_URL = import.meta.env.VITE_SITE_URL ?? 'https://joltime.kz' // TODO: заменить на реальный домен
 export const SITE_NAME = 'JOLTIME'
 
-export const PHONE_DISPLAY = '+7 702 583 7735'
-export const PHONE_RAW = '77025837735'
-export const PHONE_TEL = `tel:+${PHONE_RAW}`
+/** Номера для связи. Первый — основной: на него ведёт WhatsApp и кнопки «Позвонить». */
+export const PHONES = [
+  { display: '+7 775 593 4164', raw: '77755934164' },
+  { display: '+7 702 583 7735', raw: '77025837735' },
+].map((p) => ({ ...p, tel: `tel:+${p.raw}` }))
+
+export const PHONE_DISPLAY = PHONES[0].display
+export const PHONE_RAW = PHONES[0].raw
+export const PHONE_TEL = PHONES[0].tel
 
 export const INSTAGRAM_URL = 'https://www.instagram.com/joltime01'
 export const INSTAGRAM_HANDLE = '@joltime01'

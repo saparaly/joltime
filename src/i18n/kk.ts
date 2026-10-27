@@ -254,6 +254,7 @@ export const kk: Dictionary = {
     sectionsNav: 'Сайт бөлімдері',
     contacts: 'Байланыс',
     phoneSub: 'WhatsApp және қоңыраулар',
+    phoneSub2: 'Қоңыраулар',
     copyright: 'JOLTIME автомектебі, Астана',
     tagline: 'Куәлік бірінші реттен — бұл дайындық жүйесі.',
   },

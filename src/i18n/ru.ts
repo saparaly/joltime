@@ -273,6 +273,7 @@ export const ru = {
     sectionsNav: 'Разделы сайта',
     contacts: 'Контакты',
     phoneSub: 'WhatsApp и звонки',
+    phoneSub2: 'Звонки',
     copyright: 'Автошкола JOLTIME, Астана',
     tagline: 'Права с первого раза — это система подготовки.',
   },
