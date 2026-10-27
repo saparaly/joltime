@@ -7,11 +7,8 @@
 export const SITE_URL = import.meta.env.VITE_SITE_URL ?? 'https://joltime.kz' // TODO: заменить на реальный домен
 export const SITE_NAME = 'JOLTIME'
 
-/** Номера для связи. Первый — основной: на него ведёт WhatsApp и кнопки «Позвонить». */
-export const PHONES = [
-  { display: '+7 775 593 4164', raw: '77755934164' },
-  { display: '+7 702 583 7735', raw: '77025837735' },
-].map((p) => ({ ...p, tel: `tel:+${p.raw}` }))
+/** Номера для связи. Первый — основной: на него ведёт WhatsApp и кнопки «Позвонить». Можно добавить ещё. */
+export const PHONES = [{ display: '+7 775 593 4164', raw: '77755934164' }].map((p) => ({ ...p, tel: `tel:+${p.raw}` }))
 
 export const PHONE_DISPLAY = PHONES[0].display
 export const PHONE_RAW = PHONES[0].raw
