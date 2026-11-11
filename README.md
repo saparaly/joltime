@@ -98,7 +98,14 @@ vercel.json               — то же для Vercel
 
 Пуш в `main` запускает `.github/workflows/deploy.yml`: сборка и публикация на GitHub Pages
 (https://saparaly.github.io/joltime/). Базовый путь `/joltime/` передаётся через `BASE_PATH`,
-домен для canonical — через `VITE_SITE_URL`. При переезде на свой домен поменяйте оба значения в workflow.
+домен для canonical — через `VITE_SITE_URL`.
+
+Основной адрес — **https://joltime.kz** (домен и хостинг hoster.kz, тариф «Эконом-1», панель Plesk).
+Тот же пуш в `main` запускает `.github/workflows/deploy-hoster.yml`: сборка с `BASE_PATH=/`
+и выгрузка `dist/` в `httpdocs/` по FTPS. Доступы лежат в секретах репозитория
+`FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` (Settings → Secrets and variables → Actions);
+пока они не заданы, шаг выгрузки пропускается. `public/.htaccess` — редирект на https без www,
+отдача `index.html` для `/kk/` и кэширование ассетов. SSL — Let's Encrypt в Plesk.
 
 ## SEO
 

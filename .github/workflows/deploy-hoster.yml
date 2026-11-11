@@ -1,0 +1,52 @@
+# Сборка и выгрузка на hoster.kz (joltime.kz) по FTP при каждом пуше в main.
+# Нужны секреты репозитория (Settings → Secrets and variables → Actions):
+#   FTP_SERVER   — адрес FTP из панели Plesk (например, joltime.kz или IP сервера)
+#   FTP_USERNAME — логин FTP
+#   FTP_PASSWORD — пароль FTP
+# Пока секреты не заданы, шаг выгрузки пропускается и workflow завершается успешно.
+name: Deploy to hoster.kz
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: hoster
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+        env:
+          BASE_PATH: /
+          VITE_SITE_URL: https://joltime.kz
+      # /kk/ отдаёт тот же index.html (язык определяется в браузере по пути)
+      - run: |
+          mkdir -p dist/kk
+          cp dist/index.html dist/kk/index.html
+      - name: Upload via FTP
+        if: env.FTP_SERVER != ''
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: dist/
+          server-dir: httpdocs/
+          dangerous-clean-slate: true
+      - name: Skipped (no FTP secrets yet)
+        if: env.FTP_SERVER == ''
+        run: echo "FTP_SERVER не задан — выгрузка на hoster.kz пропущена"
