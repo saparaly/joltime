@@ -96,9 +96,9 @@ vercel.json               — то же для Vercel
 
 ## Деплой
 
-Пуш в `main` запускает `.github/workflows/deploy.yml`: сборка и публикация на GitHub Pages
-(https://saparaly.github.io/joltime/). Базовый путь `/joltime/` передаётся через `BASE_PATH`,
-домен для canonical — через `VITE_SITE_URL`.
+Пуш в `main` запускает `.github/workflows/deploy.yml`: сборка и публикация на GitHub Pages.
+К Pages привязан домен joltime.kz (Settings → Pages → Custom domain; A-записи домена ведут на
+185.199.108–111.153), поэтому собираем с `BASE_PATH=/` и `VITE_SITE_URL=https://joltime.kz`.
 
 Основной адрес — **https://joltime.kz** (домен и хостинг hoster.kz, тариф «Эконом-1», панель Plesk).
 Тот же пуш в `main` запускает `.github/workflows/deploy-hoster.yml`: сборка с `BASE_PATH=/`

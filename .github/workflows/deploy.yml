@@ -1,7 +1,6 @@
 # Сборка и публикация на GitHub Pages при каждом пуше в main.
-# Адрес сайта: https://saparaly.github.io/joltime/
-# Если появится свой домен: добавьте его в Settings → Pages → Custom domain,
-# поменяйте BASE_PATH на "/" и VITE_SITE_URL на https://ваш-домен.
+# Адрес сайта: https://joltime.kz (custom domain в Settings → Pages; старый
+# https://saparaly.github.io/joltime/ редиректит на него).
 name: Deploy to GitHub Pages
 
 on:
@@ -31,8 +30,8 @@ jobs:
       - run: npm run lint
       - run: npm run build
         env:
-          BASE_PATH: /joltime/
-          VITE_SITE_URL: https://saparaly.github.io
+          BASE_PATH: /
+          VITE_SITE_URL: https://joltime.kz
       # SPA-фолбэк: /kk/ и любые другие пути отдают index.html
       - run: |
           mkdir -p dist/kk
