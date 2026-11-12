@@ -104,8 +104,10 @@ vercel.json               — то же для Vercel
 Тот же пуш в `main` запускает `.github/workflows/deploy-hoster.yml`: сборка с `BASE_PATH=/`
 и выгрузка `dist/` в `httpdocs/` по FTPS. Доступы лежат в секретах репозитория
 `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` (Settings → Secrets and variables → Actions);
-пока они не заданы, шаг выгрузки пропускается. `public/.htaccess` — редирект на https без www,
-отдача `index.html` для `/kk/` и кэширование ассетов. SSL — Let's Encrypt в Plesk.
+пока они не заданы, шаг выгрузки пропускается. `public/.htaccess` — редирект без www,
+отдача `index.html` для `/kk/` и кэширование ассетов. Редирект на https в нём выключен, пока на
+хостинге нет SSL-сертификата (hoster.kz не даёт Let's Encrypt без запроса в поддержку) — включить, когда появится.
+Первая выгрузка 12.11.2026 сделана вручную через файловый менеджер Plesk (zip → извлечь в `httpdocs`).
 
 ## SEO
 
